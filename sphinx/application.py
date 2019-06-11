@@ -719,7 +719,7 @@ class Sphinx(object):
            Add *override* keyword.
         """
         logger.debug('[app] adding directive: %r',
-                     (name, obj, content, arguments, options))
+                     (name, obj, content, arguments, override, options))
         if name in directives._directives and not override:
             logger.warning(__('while setting up extension %s: directive %r is '
                               'already registered, it will be overridden'),
