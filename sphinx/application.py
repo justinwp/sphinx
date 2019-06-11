@@ -1135,7 +1135,7 @@ class Sphinx(object):
             return
         lexers[alias] = lexer
 
-    def add_autodocumenter(self, cls):
+    def add_autodocumenter(self, cls, override=False):
         # type: (Any) -> None
         """Register a new documenter class for the autodoc extension.
 
@@ -1152,7 +1152,7 @@ class Sphinx(object):
         logger.debug('[app] adding autodocumenter: %r', cls)
         from sphinx.ext.autodoc.directive import AutodocDirective
         self.registry.add_documenter(cls.objtype, cls)
-        self.add_directive('auto' + cls.objtype, AutodocDirective)
+        self.add_directive('auto' + cls.objtype, AutodocDirective, override=override)
 
     def add_autodoc_attrgetter(self, typ, getter):
         # type: (Type, Callable[[Any, unicode, Any], Any]) -> None
